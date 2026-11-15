@@ -185,7 +185,7 @@ jobs:
         with:
           repository: rothxz/reel-studio
           token: ${{ secrets.REEL_STUDIO_TOKEN }}
-          path: reel-studio
+          path: rycap-app
           sparse-checkout: |
             modules/video-engine/cpp
             src/data
@@ -199,8 +199,8 @@ jobs:
         shell: bash
         run: |
           for l in en km vi zh id; do
-            if [ ! -f "reel-studio/src/i18n/locales/$l.ts" ]; then
-              echo "::error::reel-studio/src/i18n/locales/$l.ts is missing: the release would be English only"
+            if [ ! -f "rycap-app/src/i18n/locales/$l.ts" ]; then
+              echo "::error::rycap-app/src/i18n/locales/$l.ts is missing: the release would be English only"
               exit 1
             fi
           done
@@ -229,8 +229,8 @@ jobs:
       - name: Build
         env:
           REEL_VERSION: ${{ env.VERSION }}
-          REEL_ENGINE_DIR: ${{ github.workspace }}/reel-studio/modules/video-engine/cpp
-          REEL_APP_DIR: ${{ github.workspace }}/reel-studio
+          REEL_ENGINE_DIR: ${{ github.workspace }}/rycap-app/modules/video-engine/cpp
+          REEL_APP_DIR: ${{ github.workspace }}/rycap-app
           REEL_ASSETS_URL: ${{ secrets.REEL_ASSETS_URL }}
           REEL_CATALOG_URL: ${{ secrets.REEL_CATALOG_URL }}
           REEL_CATALOG_KEY: ${{ secrets.REEL_CATALOG_KEY }}
@@ -349,7 +349,7 @@ jobs:
         with:
           repository: rothxz/reel-studio
           token: ${{ secrets.REEL_STUDIO_TOKEN }}
-          path: reel-studio
+          path: rycap-app
           sparse-checkout: |
             modules/video-engine/cpp
             src/data
@@ -363,8 +363,8 @@ jobs:
         shell: bash
         run: |
           for l in en km vi zh id; do
-            if [ ! -f "reel-studio/src/i18n/locales/$l.ts" ]; then
-              echo "::error::reel-studio/src/i18n/locales/$l.ts is missing: the release would be English only"
+            if [ ! -f "rycap-app/src/i18n/locales/$l.ts" ]; then
+              echo "::error::rycap-app/src/i18n/locales/$l.ts is missing: the release would be English only"
               exit 1
             fi
           done
@@ -401,8 +401,8 @@ jobs:
       - name: Build
         env:
           REEL_VERSION: ${{ env.VERSION }}
-          REEL_ENGINE_DIR: ${{ github.workspace }}/reel-studio/modules/video-engine/cpp
-          REEL_APP_DIR: ${{ github.workspace }}/reel-studio
+          REEL_ENGINE_DIR: ${{ github.workspace }}/rycap-app/modules/video-engine/cpp
+          REEL_APP_DIR: ${{ github.workspace }}/rycap-app
           REEL_ASSETS_URL: ${{ secrets.REEL_ASSETS_URL }}
           REEL_CATALOG_URL: ${{ secrets.REEL_CATALOG_URL }}
           REEL_CATALOG_KEY: ${{ secrets.REEL_CATALOG_KEY }}
@@ -508,7 +508,7 @@ jobs:
         with:
           repository: rothxz/reel-studio
           token: ${{ secrets.REEL_STUDIO_TOKEN }}
-          path: reel-studio
+          path: rycap-app
           sparse-checkout: |
             modules/video-engine/cpp
             src/data
@@ -522,8 +522,8 @@ jobs:
         shell: bash
         run: |
           for l in en km vi zh id; do
-            if [ ! -f "reel-studio/src/i18n/locales/$l.ts" ]; then
-              echo "::error::reel-studio/src/i18n/locales/$l.ts is missing: the release would be English only"
+            if [ ! -f "rycap-app/src/i18n/locales/$l.ts" ]; then
+              echo "::error::rycap-app/src/i18n/locales/$l.ts is missing: the release would be English only"
               exit 1
             fi
           done
@@ -559,8 +559,8 @@ jobs:
       - name: Build
         env:
           REEL_VERSION: ${{ env.VERSION }}
-          REEL_ENGINE_DIR: ${{ github.workspace }}/reel-studio/modules/video-engine/cpp
-          REEL_APP_DIR: ${{ github.workspace }}/reel-studio
+          REEL_ENGINE_DIR: ${{ github.workspace }}/rycap-app/modules/video-engine/cpp
+          REEL_APP_DIR: ${{ github.workspace }}/rycap-app
           REEL_ASSETS_URL: ${{ secrets.REEL_ASSETS_URL }}
           REEL_CATALOG_URL: ${{ secrets.REEL_CATALOG_URL }}
           REEL_CATALOG_KEY: ${{ secrets.REEL_CATALOG_KEY }}

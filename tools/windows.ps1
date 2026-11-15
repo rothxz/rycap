@@ -14,7 +14,7 @@
 # Tools) with the "Desktop development with C++" workload.
 #
 # The C++ engine (`cpp-engine` feature) is used when REEL_ENGINE_DIR (or
-# ..\reel-studio, see .cargo/config.toml) holds the engine sources;
+# ..\rycap-app, see .cargo/config.toml) holds the engine sources;
 # otherwise the app builds on the Rust stand-in.
 #
 # Where the tools go: $env:REEL_WIN_TOOLS, default
@@ -166,9 +166,9 @@ function Use-BuildEnv {
 }
 
 # The C++ engine when its sources are there (.cargo/config.toml's default
-# is ..\reel-studio\modules\video-engine\cpp).
+# is ..\rycap-app\modules\video-engine\cpp).
 function Get-Features {
-    $engine = if ($env:REEL_ENGINE_DIR) { $env:REEL_ENGINE_DIR } else { Join-Path $root "..\reel-studio\modules\video-engine\cpp" }
+    $engine = if ($env:REEL_ENGINE_DIR) { $env:REEL_ENGINE_DIR } else { Join-Path $root "..\rycap-app\modules\video-engine\cpp" }
     if (Test-Path (Join-Path $engine "src")) { return @("--features", "cpp-engine") }
     Write-Warning "no engine sources at ${engine}: building on the Rust stand-in (set REEL_ENGINE_DIR)"
     return @()

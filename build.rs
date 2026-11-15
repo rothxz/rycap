@@ -26,7 +26,7 @@ fn main() {
         return;
     }
     let dir = std::env::var("REEL_ENGINE_DIR").expect(
-        "the cpp-engine feature needs REEL_ENGINE_DIR=<reel-studio>/modules/video-engine/cpp",
+        "the cpp-engine feature needs REEL_ENGINE_DIR=<rycap-app>/modules/video-engine/cpp",
     );
     let dir = PathBuf::from(dir);
     let mut build = cc::Build::new();
