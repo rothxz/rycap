@@ -1,9 +1,9 @@
 # Wraps a release binary into the Windows downloads a release carries:
 #
-#   Reel-Studio-<version>-windows-<arch>.zip          "Reel Studio\reel-studio.exe":
+#   Rycap-<version>-windows-<arch>.zip                "Rycap\reel-studio.exe":
 #                                                     what the in-app updater
 #                                                     installs; runs unzipped
-#   Reel-Studio-<version>-windows-<arch>-setup.exe    the installer (per user,
+#   Rycap-<version>-windows-<arch>-setup.exe          the installer (per user,
 #                                                     Start menu, uninstaller)
 #
 #   packaging/windows/bundle.ps1 -Binary <exe> -Version <v> -Arch x64 -Out <dir>
@@ -26,7 +26,7 @@ $root = Resolve-Path (Join-Path $here "..\..")
 New-Item -ItemType Directory -Force -Path $Out | Out-Null
 $Out = (Resolve-Path $Out).Path
 $work = Join-Path ([System.IO.Path]::GetTempPath()) ("reel-bundle-" + [guid]::NewGuid())
-$stage = Join-Path $work "Reel Studio"
+$stage = Join-Path $work "Rycap"
 New-Item -ItemType Directory -Force -Path $stage | Out-Null
 
 try {
@@ -64,14 +64,14 @@ try {
         $sign = {
             param($file)
             & $signtool.FullName sign /f $pfx /p $env:WIN_SIGN_PASSWORD /fd sha256 `
-                /tr http://timestamp.digicert.com /td sha256 /d "Reel Studio" $file
+                /tr http://timestamp.digicert.com /td sha256 /d "Rycap" $file
             if ($LASTEXITCODE -ne 0) { throw "signing $file failed" }
         }
         & $sign $exe
     }
 
     # ---- zip ----------------------------------------------------------------
-    $zip = Join-Path $Out "Reel-Studio-$Version-windows-$Arch.zip"
+    $zip = Join-Path $Out "Rycap-$Version-windows-$Arch.zip"
     if (Test-Path $zip) { Remove-Item $zip }
     Compress-Archive -Path $stage -DestinationPath $zip
 
@@ -86,7 +86,7 @@ try {
     & $iscc /Q "/DVersion=$Version" "/DArch=$Arch" "/DSource=$stage" "/DIcon=$icoPath" `
         "/DOutDir=$Out" (Join-Path $here "reel-studio.iss")
     if ($LASTEXITCODE -ne 0) { throw "the installer didn't build" }
-    $setup = Join-Path $Out "Reel-Studio-$Version-windows-$Arch-setup.exe"
+    $setup = Join-Path $Out "Rycap-$Version-windows-$Arch-setup.exe"
     if ($sign) { & $sign $setup }
 
     Get-ChildItem $Out | Format-Table Name, Length

@@ -1,4 +1,4 @@
-//! Bytes Reel Studio's own features downloaded, per category, since the
+//! Bytes Rycap's own features downloaded, per category, since the
 //! counts were last reset (Settings → Data and Storage → Data Usage). The
 //! downloads call `record`; previews streamed while browsing (tile
 //! pictures, sticker thumbnails) aren't counted, as the page says.

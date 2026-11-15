@@ -4,18 +4,18 @@
 # Windows (x64) and publishes a GitHub Release `v<version>` in this
 # repo, the feed src/updater.rs reads:
 #
-#   Reel-Studio-<version>-mac-<arm64|x64>.zip        installed by the in-app updater
-#   Reel-Studio-<version>-mac-<arm64|x64>.dmg        for downloading by hand
-#   Reel-Studio-<version>-linux-<x64|arm64>.AppImage runs as it is; the updater's
-#   Reel-Studio-<version>-linux-<x64|arm64>.tar.gz   to install by hand
-#   Reel-Studio-<version>-linux-<amd64|arm64>.deb    Debian / Ubuntu package
-#   Reel-Studio-<version>-linux-<x86_64|aarch64>.rpm Fedora / openSUSE package
-#   Reel-Studio-<version>-windows-x64.zip            portable; the updater's
-#   Reel-Studio-<version>-windows-x64-setup.exe      the installer
+#   Rycap-<version>-mac-<arm64|x64>.zip              installed by the in-app updater
+#   Rycap-<version>-mac-<arm64|x64>.dmg              for downloading by hand
+#   Rycap-<version>-linux-<x64|arm64>.AppImage       runs as it is; the updater's
+#   Rycap-<version>-linux-<x64|arm64>.tar.gz         to install by hand
+#   Rycap-<version>-linux-<amd64|arm64>.deb          Debian / Ubuntu package
+#   Rycap-<version>-linux-<x86_64|aarch64>.rpm       Fedora / openSUSE package
+#   Rycap-<version>-windows-x64.zip                  portable; the updater's
+#   Rycap-<version>-windows-x64-setup.exe            the installer
 #   update.json                                      version + per-platform url / SHA-256 / size
 #
 # plus the hand downloads again under names without the version
-# (Reel-Studio-mac-arm64.dmg, …-windows-x64-setup.exe, …-linux-x64.AppImage,
+# (Rycap-mac-arm64.dmg, …-windows-x64-setup.exe, …-linux-x64.AppImage,
 # …-linux-amd64.deb, …-linux-x86_64.rpm),
 # so the README links `releases/latest/download/<name>` always fetch the
 # newest. Each release is marked "Latest" (set PRERELEASE below to hold a
@@ -669,7 +669,7 @@ jobs:
         run: |
           # The README's download links: the same files without the version.
           for f in out/*.dmg out/*-setup.exe out/*.AppImage out/*.deb out/*.rpm; do
-            cp "$f" "out/$(basename "$f" | sed "s/^Reel-Studio-$VERSION-/Reel-Studio-/")"
+            cp "$f" "out/$(basename "$f" | sed "s/^Rycap-$VERSION-/Rycap-/")"
           done
           ls -la out
           files=(out/*.zip out/*.dmg out/*.AppImage out/*.tar.gz out/*.deb out/*.rpm out/*-setup.exe)
@@ -683,7 +683,7 @@ jobs:
             [ "$PRERELEASE" = true ] && flags=(--latest=false --prerelease)
             gh release create "$TAG" "${files[@]}" --draft "${flags[@]}" \
               --target "$GITHUB_SHA" \
-              --title "Reel Studio $VERSION" \
+              --title "Rycap $VERSION" \
               --notes-file out/notes.md
             gh release upload "$TAG" out/update.json
             gh release edit "$TAG" --draft=false "${flags[@]}"
@@ -703,7 +703,7 @@ jobs:
           else
             gh release create "$bridge" --latest=false --prerelease \
               --target "$GITHUB_SHA" \
-              --title "Reel Studio $VERSION (update for 0.2.11 and older)" \
+              --title "Rycap $VERSION (update for 0.2.11 and older)" \
               --notes-file out/notes.md
             gh release upload "$bridge" out/update.json
           fi

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 # Wraps a release binary into the Linux downloads a release carries:
 #
-#   Reel-Studio-<version>-linux-<arch>.AppImage   runs on most distributions
+#   Rycap-<version>-linux-<arch>.AppImage         runs on most distributions
 #                                                 as it is; what the in-app
 #                                                 updater installs
-#   Reel-Studio-<version>-linux-<arch>.tar.gz     the program, its .desktop
+#   Rycap-<version>-linux-<arch>.tar.gz           the program, its .desktop
 #                                                 file and icon, to install
 #                                                 by hand
-#   Reel-Studio-<version>-linux-<amd64|arm64>.deb Debian, Ubuntu, Mint…:
+#   Rycap-<version>-linux-<amd64|arm64>.deb       Debian, Ubuntu, Mint…:
 #                                                 installs with the software
 #                                                 center or apt
-#   Reel-Studio-<version>-linux-<x86_64|aarch64>.rpm
+#   Rycap-<version>-linux-<x86_64|aarch64>.rpm
 #                                                 Fedora, openSUSE, RHEL…:
 #                                                 dnf / zypper
 #
@@ -32,7 +32,9 @@ version=${2:?version}
 arch=${3:?arch}
 out=${4:?out dir}
 
-NAME="Reel Studio"
+NAME="Rycap"
+# The package, program, menu entry and window class keep the first name:
+# installed packages upgrade under it, and the window matches its entry.
 ID=reel-studio
 # appimagetool and the AppImage runtime it puts in front of the image,
 # both pinned: the release, each build's SHA-256 and its release asset id
@@ -139,14 +141,14 @@ chmod 755 "$tool"
 runtime="$work/runtime-$tool_arch"
 fetch AppImage/type2-runtime "$RUNTIME_VERSION" "runtime-$tool_arch" \
   "$RUNTIME_ASSET" "$RUNTIME_SHA256" "$runtime"
-image="$out/Reel-Studio-$version-linux-$arch.AppImage"
+image="$out/Rycap-$version-linux-$arch.AppImage"
 # Extract-and-run: CI runners have no FUSE.
 ARCH=$tool_arch APPIMAGE_EXTRACT_AND_RUN=1 VERSION=$version "$tool" --no-appstream \
   --runtime-file "$runtime" "$app" "$image"
 chmod 755 "$image"
 
 # ---- tar.gz -------------------------------------------------------------------
-dir="$work/Reel-Studio-$version-linux-$arch"
+dir="$work/Rycap-$version-linux-$arch"
 mkdir -p "$dir"
 cp "$app/usr/bin/$ID" "$app/$ID.desktop" "$app/$ID.png" "$lib"/* "$dir/"
 cat > "$dir/INSTALL.txt" << EOF
@@ -166,7 +168,7 @@ then in ../lib/$ID/.
 The AppImage download runs without installing and updates itself; this
 copy doesn't (download a new one to update).
 EOF
-tar -czf "$out/Reel-Studio-$version-linux-$arch.tar.gz" -C "$work" "$(basename "$dir")"
+tar -czf "$out/Rycap-$version-linux-$arch.tar.gz" -C "$work" "$(basename "$dir")"
 
 # ---- .deb and .rpm ------------------------------------------------------------
 # The same program installed system-wide by the package manager (opening
@@ -182,8 +184,8 @@ SUMMARY="Video editor: timeline, effects, captions and an AI agent"
 DESCRIPTION="Edit videos on a multi-lane timeline with effects, filters, text,
 stickers, captions, music and sound effects, and an AI agent that edits
 with you. Face swap runs on this computer."
-MAINTAINER="Reel Studio <roth.dev.ops@gmail.com>"
-HOMEPAGE="https://github.com/rothxz/reel-studio-app"
+MAINTAINER="Rycap <roth.dev.ops@gmail.com>"
+HOMEPAGE="https://github.com/rothxz/rycap"
 # Loaded when used, so no package tool finds them in the binary: the
 # preview's Vulkan, fonts, the Wayland session.
 DEB_LOADED="libvulkan1, libfontconfig1, libwayland-client0"
@@ -223,7 +225,7 @@ linked=$(cd "$work/shlibs" && dpkg-shlibdeps -O "$deb/usr/bin/$ID" "$deb/usr/lib
   echo "Description: $SUMMARY"
   echo "$DESCRIPTION" | sed 's/^/ /'
 } > "$deb/DEBIAN/control"
-deb_file="$out/Reel-Studio-$version-linux-$deb_arch.deb"
+deb_file="$out/Rycap-$version-linux-$deb_arch.deb"
 dpkg-deb --root-owner-group -Zxz --build "$deb" "$deb_file"
 dpkg-deb --info "$deb_file"
 
@@ -278,7 +280,7 @@ rpmbuild -bb --target "$rpm_arch" \
   --define "app_loaded $RPM_LOADED" \
   --define "app_tree $tree" \
   "$rpmtop/SPECS/$ID.spec"
-rpm_file="$out/Reel-Studio-$version-linux-$rpm_arch.rpm"
+rpm_file="$out/Rycap-$version-linux-$rpm_arch.rpm"
 cp "$rpmtop/RPMS/$rpm_arch/$ID-$version-1.$rpm_arch.rpm" "$rpm_file"
 rpm -qpi "$rpm_file"
 echo "requires:"

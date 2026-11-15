@@ -310,10 +310,8 @@ impl Editor {
             Icon::Speedometer,
             "Share anonymous usage data",
             Some(
-                t(
-                    "Which features get used, to make Reel Studio better. Never your \
-                   media, projects or text.",
-                )
+                t("Which features get used, to make Rycap better. Never your \
+                   media, projects or text.")
                 .into(),
             ),
         )

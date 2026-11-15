@@ -45,7 +45,7 @@ pub mod types;
 
 /// The tag an exported video with a swapped face carries.
 pub const MANIPULATED_NOTE: &str =
-    "AI-edited: a face in this video was replaced with AI face swap (Reel Studio).";
+    "AI-edited: a face in this video was replaced with AI face swap (Rycap).";
 
 pub use config::{FaceSwapSettings, Quality, TargetAnchor};
 pub use error::FaceSwapError;

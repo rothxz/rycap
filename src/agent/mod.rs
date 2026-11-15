@@ -282,7 +282,7 @@ impl Agent {
 // ---- prompts --------------------------------------------------------------------------
 
 pub const SYSTEM_PROMPT: &str = "\
-You are the editing assistant inside Reel Studio, a video editor. You change the user's project ONLY by calling the tools.
+You are the editing assistant inside Rycap, a video editor. You change the user's project ONLY by calling the tools.
 The project data doesn't show the picture, but the look tool does: it shows you real frames. Call it whenever the request depends on what's in the video (what it shows, a moment, where to cut, a fitting title). Never say you can't see the video.
 
 Timeline basics:

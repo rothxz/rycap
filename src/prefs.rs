@@ -71,7 +71,8 @@ pub fn home_dir() -> PathBuf {
         .unwrap_or_default()
 }
 
-/// The app's data folder (created on first use).
+/// The app's data folder (created on first use). It keeps the app's
+/// first name: renaming it would hide everyone's projects and settings.
 pub fn data_dir() -> PathBuf {
     let home = home_dir();
     let dir = if cfg!(target_os = "macos") {

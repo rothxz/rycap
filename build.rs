@@ -310,7 +310,7 @@ fn json_string(text: &str) -> String {
 fn release_inputs() {
     for (key, default) in [
         ("REEL_VERSION", std::env::var("CARGO_PKG_VERSION").unwrap()),
-        ("REEL_UPDATE_REPO", "rothxz/reel-studio-app".to_string()),
+        ("REEL_UPDATE_REPO", "rothxz/rycap".to_string()),
     ] {
         println!("cargo:rerun-if-env-changed={key}");
         let value = std::env::var(key)
@@ -478,12 +478,12 @@ BEGIN
   BEGIN
     BLOCK "040904b0"
     BEGIN
-      VALUE "CompanyName", "Reel Studio"
-      VALUE "FileDescription", "Reel Studio"
+      VALUE "CompanyName", "Rycap"
+      VALUE "FileDescription", "Rycap"
       VALUE "FileVersion", "{version}"
       VALUE "InternalName", "reel-studio"
       VALUE "OriginalFilename", "reel-studio.exe"
-      VALUE "ProductName", "Reel Studio"
+      VALUE "ProductName", "Rycap"
       VALUE "ProductVersion", "{version}"
     END
   END

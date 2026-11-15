@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Wraps a release binary into "Reel Studio.app", signs it, optionally
+# Wraps a release binary into "Rycap.app", signs it, optionally
 # notarizes it, and writes the two downloads a release carries:
 #
-#   Reel-Studio-<version>-mac-<arch>.zip   what the in-app updater installs
+#   Rycap-<version>-mac-<arch>.zip         what the in-app updater installs
 #                                          (src/updater.rs unpacks it with ditto)
-#   Reel-Studio-<version>-mac-<arch>.dmg   what people download by hand
+#   Rycap-<version>-mac-<arch>.dmg         what people download by hand
 #
 #   packaging/macos/bundle.sh <binary> <version> <arm64|x64> <out-dir>
 #
@@ -15,8 +15,10 @@
 #   APPLE_ID, APPLE_APP_SPECIFIC_PASSWORD, APPLE_TEAM_ID
 #                       notarize the app and staple its ticket
 #
-# The bundle id and name match the previous desktop build, so this app can
-# replace it in place (and the updater only accepts bundles with this id).
+# The bundle id and the program's name match the previous desktop builds
+# (the app was called Reel Studio), so this app replaces them in place: the
+# updater only accepts bundles with this id, and installs them where the
+# running copy is, so an updated copy keeps its "Reel Studio.app" folder.
 set -euo pipefail
 
 binary=${1:?usage: bundle.sh <binary> <version> <arm64|x64> <out-dir>}
@@ -25,7 +27,7 @@ arch=${3:?arch}
 out=${4:?out dir}
 
 BUNDLE_ID=${BUNDLE_ID:-com.reelstudio.desktop}
-NAME="Reel Studio"
+NAME="Rycap"
 EXE=reel-studio
 MIN_MACOS=${MACOSX_DEPLOYMENT_TARGET:-11.0}
 here=$(cd "$(dirname "$0")" && pwd)
@@ -98,7 +100,7 @@ cat > "$app/Contents/Info.plist" << PLIST
   <key>LSMinimumSystemVersion</key><string>$MIN_MACOS</string>
   <key>NSHighResolutionCapable</key><true/>
   <key>NSSupportsAutomaticGraphicsSwitching</key><true/>
-  <key>NSHumanReadableCopyright</key><string>Copyright © 2026 Reel Studio</string>
+  <key>NSHumanReadableCopyright</key><string>Copyright © 2026 Rycap</string>
 </dict>
 </plist>
 PLIST
@@ -126,7 +128,7 @@ else
 fi
 codesign --verify --deep --strict "$app"
 
-base="Reel-Studio-$version-mac-$arch"
+base="Rycap-$version-mac-$arch"
 dmg="$out/$base.dmg"
 zip="$out/$base.zip"
 rm -f "$dmg" "$zip"

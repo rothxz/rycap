@@ -1,4 +1,4 @@
-# Reel Studio desktop: context
+# Rycap desktop: context
 
 This repo is the **desktop app**: a native Rust reimplementation of the
 Reel Studio desktop editor on GPUI (the UI framework behind the Zed
@@ -6,6 +6,16 @@ editor), replacing the Electron build. The Cargo crate sits at the repo
 root next to the public `README.md` / `docs/images/` and the GitHub
 Releases (the Electron build publishes there until the Rust app ships).
 Its write-up is `docs/GPUI.md`.
+
+**The app is called Rycap** (it was Reel Studio). What people see says
+Rycap: `i18n::APP_NAME`, the window, menus, messages, packages and
+release files. Everything an existing install depends on keeps the first
+name: the bundle id `com.reelstudio.desktop`, the Windows AppId and
+`reel-studio.exe`, the Linux id / package `reel-studio`, the data folders
+(`prefs.rs`), the keychain entries (`agent/keys.rs`), the repos and the
+`reel-studio` checkout. The shared dictionaries still write "Reel Studio":
+`i18n.rs` looks strings naming the app up under that spelling and shows
+Rycap in their place.
 
 **Goal:** match the current desktop editor's UI and behaviour (the web
 editor that Electron wraps) in native Rust, panel by panel. Track progress

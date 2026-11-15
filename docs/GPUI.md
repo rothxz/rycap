@@ -1,4 +1,4 @@
-# Reel Studio desktop on GPUI
+# Rycap desktop on GPUI
 
 The desktop editor, reimplemented as a native Rust app on
 [GPUI](https://www.gpui.rs) (the UI framework behind the Zed editor), to
@@ -53,7 +53,7 @@ REEL_ENGINE_DIR=/path/to/reel-studio/modules/video-engine/cpp \
 
 cargo test                            # model + engine tests (either backend)
 
-# In the ~/Project workspace layout (reel-studio next to reel-studio-app),
+# In the ~/Project workspace layout (reel-studio next to rycap),
 # .cargo/config.toml already points REEL_ENGINE_DIR there:
 cargo dev ~/Movies/a.mp4              # run --release --features cpp-engine
 cargo t                               # tests on the C++ engine
@@ -156,7 +156,7 @@ only run CI.
    LGPL FFmpeg (`packaging/macos/build-ffmpeg.sh`, cached), then
    `cargo build --release --features cpp-engine` against a sparse checkout
    of the private app repo (engine + filter data only), then
-   `packaging/macos/bundle.sh`: `Reel Studio.app` (same bundle id as the
+   `packaging/macos/bundle.sh`: `Rycap.app` (same bundle id as the
    Electron build, `com.reelstudio.desktop`), signed, notarized and
    stapled when the secrets are set, as a `.zip` (for the updater) and a
    `.dmg`.

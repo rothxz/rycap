@@ -1,4 +1,4 @@
-# Local defaults for the workspace layout (~/Project/reel-studio-app next to
+# Local defaults for the workspace layout (~/Project/rycap next to
 # ~/Project/reel-studio). An exported REEL_ENGINE_DIR / REEL_APP_DIR still wins.
 [env]
 REEL_ENGINE_DIR = { value = "../reel-studio/modules/video-engine/cpp", relative = true, force = false }

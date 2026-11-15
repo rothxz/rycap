@@ -38,7 +38,7 @@ fn encode(s: &str) -> String {
 /// identifying: no machine names or ids.
 pub fn bug_report_url() -> String {
     use crate::i18n::t;
-    let subject = t("Reel Studio bug report");
+    let subject = t("Rycap bug report");
     let body = [
         t(
             "Tell us what went wrong and how to make it happen again. A screenshot or screen \
@@ -69,6 +69,6 @@ mod tests {
         let url = super::bug_report_url();
         assert!(url.starts_with("mailto:"));
         assert!(!url.contains(' ') && !url.contains('\n'));
-        assert!(url.contains("subject=Reel%20Studio%20bug%20report"));
+        assert!(url.contains("subject=Rycap%20bug%20report"));
     }
 }

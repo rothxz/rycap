@@ -13,7 +13,7 @@
 #   onnxruntime-LICENSE.txt                MIT, shipped with it
 #   onnxruntime-ThirdPartyNotices.txt
 #
-# bundle.sh puts the library in "Reel Studio.app/Contents/Frameworks" and
+# bundle.sh puts the library in "Rycap.app/Contents/Frameworks" and
 # signs it with the app. The version must be at least the API ort is built
 # for on this target (Cargo.toml's `api-23`).
 set -euo pipefail

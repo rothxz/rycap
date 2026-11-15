@@ -1,4 +1,4 @@
-//! What Reel Studio keeps on this computer, by category (Settings → Data
+//! What Rycap keeps on this computer, by category (Settings → Data
 //! and Storage → Storage Usage). Cache categories hold files the app
 //! downloads or makes again on its own, so they can be cleared and trimmed;
 //! the rest is the user's work and downloads, only measured here.
