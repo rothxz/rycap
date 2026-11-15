@@ -88,7 +88,7 @@ impl Editor {
             Status::Idle | Status::UpToDate => (
                 Icon::CheckmarkCircle,
                 "You're up to date".into(),
-                format!("Reel Studio {current} is the newest version.").into(),
+                format!("{} {current} is the newest version.", crate::i18n::APP_NAME).into(),
             ),
             Status::Unsupported => (
                 Icon::InformationCircle,
@@ -114,7 +114,7 @@ impl Editor {
             Status::Downloaded | Status::Installed => (
                 Icon::RefreshCircle,
                 format!("Version {version} is ready").into(),
-                "Restart Reel Studio to finish updating. Your project is saved first.".into(),
+                "Restart Rycap to finish updating. Your project is saved first.".into(),
             ),
         };
         let show_notes = !version.is_empty()

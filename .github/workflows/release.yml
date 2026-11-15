@@ -4,18 +4,18 @@
 # Windows (x64) and publishes a GitHub Release `v<version>` in this
 # repo, the feed src/updater.rs reads:
 #
-#   Reel-Studio-<version>-mac-<arm64|x64>.zip        installed by the in-app updater
-#   Reel-Studio-<version>-mac-<arm64|x64>.dmg        for downloading by hand
-#   Reel-Studio-<version>-linux-<x64|arm64>.AppImage runs as it is; the updater's
-#   Reel-Studio-<version>-linux-<x64|arm64>.tar.gz   to install by hand
-#   Reel-Studio-<version>-linux-<amd64|arm64>.deb    Debian / Ubuntu package
-#   Reel-Studio-<version>-linux-<x86_64|aarch64>.rpm Fedora / openSUSE package
-#   Reel-Studio-<version>-windows-x64.zip            portable; the updater's
-#   Reel-Studio-<version>-windows-x64-setup.exe      the installer
+#   Rycap-<version>-mac-<arm64|x64>.zip              installed by the in-app updater
+#   Rycap-<version>-mac-<arm64|x64>.dmg              for downloading by hand
+#   Rycap-<version>-linux-<x64|arm64>.AppImage       runs as it is; the updater's
+#   Rycap-<version>-linux-<x64|arm64>.tar.gz         to install by hand
+#   Rycap-<version>-linux-<amd64|arm64>.deb          Debian / Ubuntu package
+#   Rycap-<version>-linux-<x86_64|aarch64>.rpm       Fedora / openSUSE package
+#   Rycap-<version>-windows-x64.zip                  portable; the updater's
+#   Rycap-<version>-windows-x64-setup.exe            the installer
 #   update.json                                      version + per-platform url / SHA-256 / size
 #
 # plus the hand downloads again under names without the version
-# (Reel-Studio-mac-arm64.dmg, …-windows-x64-setup.exe, …-linux-x64.AppImage,
+# (Rycap-mac-arm64.dmg, …-windows-x64-setup.exe, …-linux-x64.AppImage,
 # …-linux-amd64.deb, …-linux-x86_64.rpm),
 # so the README links `releases/latest/download/<name>` always fetch the
 # newest. Each release is marked "Latest" (set PRERELEASE below to hold a
@@ -185,7 +185,7 @@ jobs:
         with:
           repository: rothxz/reel-studio
           token: ${{ secrets.REEL_STUDIO_TOKEN }}
-          path: reel-studio
+          path: rycap-app
           sparse-checkout: |
             modules/video-engine/cpp
             src/data
@@ -199,8 +199,8 @@ jobs:
         shell: bash
         run: |
           for l in en km vi zh id; do
-            if [ ! -f "reel-studio/src/i18n/locales/$l.ts" ]; then
-              echo "::error::reel-studio/src/i18n/locales/$l.ts is missing: the release would be English only"
+            if [ ! -f "rycap-app/src/i18n/locales/$l.ts" ]; then
+              echo "::error::rycap-app/src/i18n/locales/$l.ts is missing: the release would be English only"
               exit 1
             fi
           done
@@ -229,9 +229,8 @@ jobs:
       - name: Build
         env:
           REEL_VERSION: ${{ env.VERSION }}
-          REEL_REQUIRE_ENGINE: "1"
-          REEL_ENGINE_DIR: ${{ github.workspace }}/reel-studio/modules/video-engine/cpp
-          REEL_APP_DIR: ${{ github.workspace }}/reel-studio
+          REEL_ENGINE_DIR: ${{ github.workspace }}/rycap-app/modules/video-engine/cpp
+          REEL_APP_DIR: ${{ github.workspace }}/rycap-app
           REEL_ASSETS_URL: ${{ secrets.REEL_ASSETS_URL }}
           REEL_CATALOG_URL: ${{ secrets.REEL_CATALOG_URL }}
           REEL_CATALOG_KEY: ${{ secrets.REEL_CATALOG_KEY }}
@@ -243,7 +242,7 @@ jobs:
             tail -n 3 "$log"
             exit 0
           fi
-          if grep -q 'failed to run custom build command for `reel-studio-gpui' "$log"; then
+          if grep -q 'failed to run custom build command for `rycap' "$log"; then
             # The engine (C++) failed: its compiler output quotes private
             # sources, so only the error lines go to this public log.
             echo "::error::The engine failed to build; compiler output withheld (public log). Errors:"
@@ -285,7 +284,7 @@ jobs:
           # The API fallback for the pinned ONNX Runtime (Intel; rate limit).
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          packaging/macos/bundle.sh "target/${{ matrix.target }}/release/reel-studio-gpui" \
+          packaging/macos/bundle.sh "target/${{ matrix.target }}/release/rycap" \
             "$VERSION" "${{ matrix.arch }}" dist
 
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -350,7 +349,7 @@ jobs:
         with:
           repository: rothxz/reel-studio
           token: ${{ secrets.REEL_STUDIO_TOKEN }}
-          path: reel-studio
+          path: rycap-app
           sparse-checkout: |
             modules/video-engine/cpp
             src/data
@@ -364,8 +363,8 @@ jobs:
         shell: bash
         run: |
           for l in en km vi zh id; do
-            if [ ! -f "reel-studio/src/i18n/locales/$l.ts" ]; then
-              echo "::error::reel-studio/src/i18n/locales/$l.ts is missing: the release would be English only"
+            if [ ! -f "rycap-app/src/i18n/locales/$l.ts" ]; then
+              echo "::error::rycap-app/src/i18n/locales/$l.ts is missing: the release would be English only"
               exit 1
             fi
           done
@@ -402,9 +401,8 @@ jobs:
       - name: Build
         env:
           REEL_VERSION: ${{ env.VERSION }}
-          REEL_REQUIRE_ENGINE: "1"
-          REEL_ENGINE_DIR: ${{ github.workspace }}/reel-studio/modules/video-engine/cpp
-          REEL_APP_DIR: ${{ github.workspace }}/reel-studio
+          REEL_ENGINE_DIR: ${{ github.workspace }}/rycap-app/modules/video-engine/cpp
+          REEL_APP_DIR: ${{ github.workspace }}/rycap-app
           REEL_ASSETS_URL: ${{ secrets.REEL_ASSETS_URL }}
           REEL_CATALOG_URL: ${{ secrets.REEL_CATALOG_URL }}
           REEL_CATALOG_KEY: ${{ secrets.REEL_CATALOG_KEY }}
@@ -416,7 +414,7 @@ jobs:
             tail -n 3 "$log"
             exit 0
           fi
-          if grep -q 'failed to run custom build command for `reel-studio-gpui' "$log"; then
+          if grep -q 'failed to run custom build command for `rycap' "$log"; then
             # The engine (C++) failed: its compiler output quotes private
             # sources, so only the error lines go to this public log.
             echo "::error::The engine failed to build; compiler output withheld (public log). Errors:"
@@ -431,7 +429,7 @@ jobs:
           # The API fallback for the pinned AppImage tools (rate limit).
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          packaging/linux/bundle.sh target/release/reel-studio-gpui \
+          packaging/linux/bundle.sh target/release/rycap \
             "$VERSION" "${{ matrix.arch }}" dist
 
       # The packages install where people will: the .deb here (the oldest
@@ -510,7 +508,7 @@ jobs:
         with:
           repository: rothxz/reel-studio
           token: ${{ secrets.REEL_STUDIO_TOKEN }}
-          path: reel-studio
+          path: rycap-app
           sparse-checkout: |
             modules/video-engine/cpp
             src/data
@@ -524,8 +522,8 @@ jobs:
         shell: bash
         run: |
           for l in en km vi zh id; do
-            if [ ! -f "reel-studio/src/i18n/locales/$l.ts" ]; then
-              echo "::error::reel-studio/src/i18n/locales/$l.ts is missing: the release would be English only"
+            if [ ! -f "rycap-app/src/i18n/locales/$l.ts" ]; then
+              echo "::error::rycap-app/src/i18n/locales/$l.ts is missing: the release would be English only"
               exit 1
             fi
           done
@@ -561,9 +559,9 @@ jobs:
       - name: Build
         env:
           REEL_VERSION: ${{ env.VERSION }}
-          REEL_REQUIRE_ENGINE: "1"
-          REEL_ENGINE_DIR: ${{ github.workspace }}/reel-studio/modules/video-engine/cpp
-          REEL_APP_DIR: ${{ github.workspace }}/reel-studio
+          REEL_ENGINE_DIR: ${{ github.workspace }}/rycap-app/modules/video-engine/cpp
+          REEL_APP_DIR: ${{ github.workspace }}/rycap-app
+ 
           REEL_ASSETS_URL: ${{ secrets.REEL_ASSETS_URL }}
           REEL_CATALOG_URL: ${{ secrets.REEL_CATALOG_URL }}
           REEL_CATALOG_KEY: ${{ secrets.REEL_CATALOG_KEY }}
@@ -581,7 +579,7 @@ jobs:
             tail -n 3 "$log"
             exit 0
           fi
-          if grep -q 'failed to run custom build command for `reel-studio-gpui' "$log"; then
+          if grep -q 'failed to run custom build command for `rycap' "$log"; then
             # The engine (C++) failed: its compiler output quotes private
             # sources, so only the error lines go to this public log.
             echo "::error::The engine failed to build; compiler output withheld (public log). Errors:"
@@ -598,7 +596,7 @@ jobs:
           WIN_SIGN_PFX: ${{ secrets.WIN_SIGN_PFX }}
           WIN_SIGN_PASSWORD: ${{ secrets.WIN_SIGN_PASSWORD }}
         run: |
-          packaging/windows/bundle.ps1 -Binary target/release/reel-studio-gpui.exe `
+          packaging/windows/bundle.ps1 -Binary target/release/rycap.exe `
             -Version $env:VERSION -Arch x64 -Out dist
 
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -672,7 +670,7 @@ jobs:
         run: |
           # The README's download links: the same files without the version.
           for f in out/*.dmg out/*-setup.exe out/*.AppImage out/*.deb out/*.rpm; do
-            cp "$f" "out/$(basename "$f" | sed "s/^Reel-Studio-$VERSION-/Reel-Studio-/")"
+            cp "$f" "out/$(basename "$f" | sed "s/^Rycap-$VERSION-/Rycap-/")"
           done
           ls -la out
           files=(out/*.zip out/*.dmg out/*.AppImage out/*.tar.gz out/*.deb out/*.rpm out/*-setup.exe)
@@ -686,7 +684,7 @@ jobs:
             [ "$PRERELEASE" = true ] && flags=(--latest=false --prerelease)
             gh release create "$TAG" "${files[@]}" --draft "${flags[@]}" \
               --target "$GITHUB_SHA" \
-              --title "Reel Studio $VERSION" \
+              --title "Rycap $VERSION" \
               --notes-file out/notes.md
             gh release upload "$TAG" out/update.json
             gh release edit "$TAG" --draft=false "${flags[@]}"
@@ -706,7 +704,7 @@ jobs:
           else
             gh release create "$bridge" --latest=false --prerelease \
               --target "$GITHUB_SHA" \
-              --title "Reel Studio $VERSION (update for 0.2.11 and older)" \
+              --title "Rycap $VERSION (update for 0.2.11 and older)" \
               --notes-file out/notes.md
             gh release upload "$bridge" out/update.json
           fi

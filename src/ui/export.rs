@@ -82,7 +82,14 @@ fn file_name(project: &str) -> String {
         })
         .collect();
     let safe = safe.trim();
-    format!("{}.mp4", if safe.is_empty() { "Reel Studio" } else { safe })
+    format!(
+        "{}.mp4",
+        if safe.is_empty() {
+            crate::i18n::APP_NAME
+        } else {
+            safe
+        }
+    )
 }
 
 /// "Show in Finder" on a Mac, the file manager's word elsewhere.
@@ -638,7 +645,7 @@ mod tests {
     #[test]
     fn file_names_are_safe() {
         assert_eq!(file_name("My trip: day 1/2"), "My trip  day 1 2.mp4");
-        assert_eq!(file_name("  "), "Reel Studio.mp4");
+        assert_eq!(file_name("  "), "Rycap.mp4");
     }
 
     #[test]

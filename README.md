@@ -1,28 +1,28 @@
 <div align="center">
 
-<img src="docs/images/app-icon-rounded.png" width="112" alt="Reel Studio icon" />
+<img src="docs/images/app-icon-rounded.png" width="112" alt="Rycap icon" />
 
-# Reel Studio
+# Rycap
 
 **Free video & photo editor for creators — on your phone and on your desktop.**
 
 Timeline editing, trending effects, auto captions and one-click background removal, with AI that runs on your device.
 
-[![Latest release](https://img.shields.io/github/v/release/rothxz/reel-studio-app?label=desktop&color=111111)](https://github.com/rothxz/reel-studio-app/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/rothxz/reel-studio-app/total?color=111111)](https://github.com/rothxz/reel-studio-app/releases)
+[![Latest release](https://img.shields.io/github/v/release/rothxz/rycap?label=desktop&color=111111)](https://github.com/rothxz/rycap/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/rothxz/rycap/total?color=111111)](https://github.com/rothxz/rycap/releases)
 
-[![macOS](https://img.shields.io/badge/macOS-Download-1f1f1f?style=for-the-badge&logo=apple&logoColor=white&labelColor=000000)](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-mac-arm64.dmg)
-[![Windows](https://img.shields.io/badge/Windows-Download-1f1f1f?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0wIDBoMTEuNHYxMS40SDB6TTEyLjYgMEgyNHYxMS40SDEyLjZ6TTAgMTIuNmgxMS40VjI0SDB6TTEyLjYgMTIuNkgyNFYyNEgxMi42eiIvPjwvc3ZnPg%3D%3D&logoColor=white&labelColor=000000)](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-windows-x64-setup.exe)
-[![Linux](https://img.shields.io/badge/Linux-Download-1f1f1f?style=for-the-badge&logo=linux&logoColor=white&labelColor=000000)](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-linux-x64.AppImage)
+[![macOS](https://img.shields.io/badge/macOS-Download-1f1f1f?style=for-the-badge&logo=apple&logoColor=white&labelColor=000000)](https://github.com/rothxz/rycap/releases/latest/download/Rycap-mac-arm64.dmg)
+[![Windows](https://img.shields.io/badge/Windows-Download-1f1f1f?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0wIDBoMTEuNHYxMS40SDB6TTEyLjYgMEgyNHYxMS40SDEyLjZ6TTAgMTIuNmgxMS40VjI0SDB6TTEyLjYgMTIuNkgyNFYyNEgxMi42eiIvPjwvc3ZnPg%3D%3D&logoColor=white&labelColor=000000)](https://github.com/rothxz/rycap/releases/latest/download/Rycap-windows-x64-setup.exe)
+[![Linux](https://img.shields.io/badge/Linux-Download-1f1f1f?style=for-the-badge&logo=linux&logoColor=white&labelColor=000000)](https://github.com/rothxz/rycap/releases/latest/download/Rycap-linux-x64.AppImage)
 <br />
 [![Google Play](https://img.shields.io/badge/Google_Play-Get_it-1f1f1f?style=for-the-badge&logo=googleplay&logoColor=white&labelColor=000000)](https://play.google.com/store/apps/details?id=com.reelstudio.app)
 [![App Store](https://img.shields.io/badge/App_Store-In_review-1f1f1f?style=for-the-badge&logo=appstore&logoColor=white&labelColor=000000)](#download)
 
-[Website](https://reel-studio.expo.app) · [All releases](https://github.com/rothxz/reel-studio-app/releases)
+[Website](https://reel-studio.expo.app) · [All releases](https://github.com/rothxz/rycap/releases)
 
 <br />
 
-<img src="docs/images/desktop-editor.png" alt="Reel Studio desktop editor: media and caption browser, player, inspector and multi-lane timeline" />
+<img src="docs/images/desktop-editor.png" alt="Rycap desktop editor: media and caption browser, player, inspector and multi-lane timeline" />
 
 </div>
 
@@ -30,15 +30,15 @@ Timeline editing, trending effects, auto captions and one-click background remov
 
 | Platform                     | Get it                                                       | Notes                                        |
 | ---------------------------- | ------------------------------------------------------------ | -------------------------------------------- |
-| **macOS** (Apple Silicon)    | [Download `.dmg`](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-mac-arm64.dmg)                 | Signed & notarized by Apple                  |
-| **macOS** (Intel)            | [Download `.dmg`](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-mac-x64.dmg)                   | Signed & notarized by Apple                  |
-| **Windows** 10 / 11 (64-bit) | [Download installer](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-windows-x64-setup.exe)      | See [first launch](#first-launch)            |
-| **Linux** (x86_64)           | [`.deb`](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-linux-amd64.deb) · [`.rpm`](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-linux-x86_64.rpm) · [`.AppImage`](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-linux-x64.AppImage) | `.deb` Ubuntu / Debian, `.rpm` Fedora / openSUSE, AppImage needs no install |
-| **Linux** (ARM64)            | [`.deb`](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-linux-arm64.deb) · [`.rpm`](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-linux-aarch64.rpm) · [`.AppImage`](https://github.com/rothxz/reel-studio-app/releases/latest/download/Reel-Studio-linux-arm64.AppImage) | Same, for ARM64 |
+| **macOS** (Apple Silicon)    | [Download `.dmg`](https://github.com/rothxz/rycap/releases/latest/download/Rycap-mac-arm64.dmg)                 | Signed & notarized by Apple                  |
+| **macOS** (Intel)            | [Download `.dmg`](https://github.com/rothxz/rycap/releases/latest/download/Rycap-mac-x64.dmg)                   | Signed & notarized by Apple                  |
+| **Windows** 10 / 11 (64-bit) | [Download installer](https://github.com/rothxz/rycap/releases/latest/download/Rycap-windows-x64-setup.exe)      | See [first launch](#first-launch)            |
+| **Linux** (x86_64)           | [`.deb`](https://github.com/rothxz/rycap/releases/latest/download/Rycap-linux-amd64.deb) · [`.rpm`](https://github.com/rothxz/rycap/releases/latest/download/Rycap-linux-x86_64.rpm) · [`.AppImage`](https://github.com/rothxz/rycap/releases/latest/download/Rycap-linux-x64.AppImage) | `.deb` Ubuntu / Debian, `.rpm` Fedora / openSUSE, AppImage needs no install |
+| **Linux** (ARM64)            | [`.deb`](https://github.com/rothxz/rycap/releases/latest/download/Rycap-linux-arm64.deb) · [`.rpm`](https://github.com/rothxz/rycap/releases/latest/download/Rycap-linux-aarch64.rpm) · [`.AppImage`](https://github.com/rothxz/rycap/releases/latest/download/Rycap-linux-arm64.AppImage) | Same, for ARM64 |
 | **Android**                  | [Google Play](https://play.google.com/store/apps/details?id=com.reelstudio.app)                            | Available now                                |
 | **iPhone**                   | App Store                                                                                                  | In review, coming soon                       |
 
-Portable `.zip` / `.tar.gz` builds and older versions are on [All releases](https://github.com/rothxz/reel-studio-app/releases). The desktop apps update themselves: when a new version is out, Reel Studio offers to download it and restart.
+Portable `.zip` / `.tar.gz` builds and older versions are on [All releases](https://github.com/rothxz/rycap/releases). The desktop apps update themselves: when a new version is out, Rycap offers to download it and restart.
 
 ## On your phone
 
@@ -97,23 +97,23 @@ English · ខ្មែរ (Khmer) · Tiếng Việt · 简体中文 · Bahasa I
 
 ## First launch
 
-- **macOS**: open the `.dmg` and drag Reel Studio to Applications. The app is notarized by Apple, so it opens like any other app.
+- **macOS**: open the `.dmg` and drag Rycap to Applications. The app is notarized by Apple, so it opens like any other app.
 - **Windows**: the installer is not code-signed yet, so Windows SmartScreen may warn you. Click **More info → Run anyway**.
 - **Linux**, pick one:
   - **Ubuntu, Debian, Mint, Pop!_OS**: open the `.deb` with Software Install, or
     ```sh
-    sudo apt install ./Reel-Studio-linux-amd64.deb
+    sudo apt install ./Rycap-linux-amd64.deb
     ```
-  - **Fedora, RHEL**: `sudo dnf install ./Reel-Studio-linux-x86_64.rpm`
-  - **openSUSE**: `sudo zypper install --allow-unsigned-rpm ./Reel-Studio-linux-x86_64.rpm`
+  - **Fedora, RHEL**: `sudo dnf install ./Rycap-linux-x86_64.rpm`
+  - **openSUSE**: `sudo zypper install --allow-unsigned-rpm ./Rycap-linux-x86_64.rpm`
   - **Any distribution, no install**: make the AppImage executable and run it. Only the AppImage updates itself; for a `.deb` / `.rpm`, install the new version's package over the old one.
     ```sh
-    chmod +x Reel-Studio-linux-x64.AppImage
-    ./Reel-Studio-linux-x64.AppImage
+    chmod +x Rycap-linux-x64.AppImage
+    ./Rycap-linux-x64.AppImage
     ```
     If it doesn't start (no FUSE on the system), run it with `--appimage-extract-and-run`.
 
-  Installed from a `.deb` or `.rpm`, Reel Studio appears in the app menu.
+  Installed from a `.deb` or `.rpm`, Rycap appears in the app menu.
 
 ### System requirements
 
@@ -126,12 +126,12 @@ English · ខ្មែរ (Khmer) · Tiếng Việt · 简体中文 · Bahasa I
 
 ## Feedback
 
-Found a bug or have an idea? [Open an issue](https://github.com/rothxz/reel-studio-app/issues). Please include your OS, the app version and steps to reproduce.
+Found a bug or have an idea? [Open an issue](https://github.com/rothxz/rycap/issues). Please include your OS, the app version and steps to reproduce.
 
 ## About this repository
 
-This repository hosts the **public releases** of Reel Studio for desktop. The installed apps check it for updates. The app's source code is not published here.
+This repository hosts the **public releases** of Rycap for desktop. The installed apps check it for updates. The app's source code is not published here.
 
 <div align="center">
-<sub>© 2026 Reel Studio. All rights reserved.</sub>
+<sub>© 2026 Rycap. All rights reserved.</sub>
 </div>

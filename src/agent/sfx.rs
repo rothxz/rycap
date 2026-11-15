@@ -189,7 +189,7 @@ pub fn openverse(query: &str) -> Result<Vec<SoundHit>> {
         );
         let mut response = crate::assets::agent()
             .get(&url)
-            .header("User-Agent", "ReelStudio/desktop (video editor)")
+            .header("User-Agent", "Rycap/desktop (video editor)")
             .call()
             .context("Openverse search")?;
         let body = response.body_mut().read_to_string()?;
@@ -324,7 +324,7 @@ pub fn download(hit: &SoundHit) -> Result<PathBuf> {
     }
     let mut response = download_agent()
         .get(&hit.url)
-        .header("User-Agent", "ReelStudio/desktop (video editor)")
+        .header("User-Agent", "Rycap/desktop (video editor)")
         .call()
         .with_context(|| hit.url.clone())?;
     let bytes = response

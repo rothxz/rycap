@@ -68,12 +68,12 @@ pub fn set_app_menus(cx: &mut App) {
     use i18n::t;
     cx.set_menus(vec![
         Menu {
-            name: t("Reel Studio").into(),
+            name: t(i18n::APP_NAME).into(),
             items: vec![
                 MenuItem::action(t("Settings…"), OpenSettings),
                 MenuItem::action(t("Check for Updates…"), CheckForUpdates),
                 MenuItem::separator(),
-                MenuItem::action(t("Quit Reel Studio"), Quit),
+                MenuItem::action(t("Quit Rycap"), Quit),
             ],
         },
         Menu {
@@ -207,7 +207,7 @@ fn open_main_window(cx: &mut App, first: bool) {
         WindowOptions {
             window_bounds: Some(WindowBounds::Windowed(bounds)),
             titlebar: Some(TitlebarOptions {
-                title: Some("Reel Studio".into()),
+                title: Some(i18n::APP_NAME.into()),
                 appears_transparent: true,
                 traffic_light_position: Some(point(px(12.), px(12.))),
             }),

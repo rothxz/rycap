@@ -1,6 +1,6 @@
 # Usage data
 
-Reel Studio collects a small amount of **anonymous** usage data, such as
+Rycap collects a small amount of **anonymous** usage data, such as
 which features are used and whether exports succeed. It tells us what to
 improve and what's broken. It never includes your videos, your projects or
 anything you type, and you can turn it off at any time.
@@ -33,7 +33,7 @@ discarded. Switch it back on whenever you like.
 
 - operating system and version (e.g. macOS 15.4)
 - processor type (e.g. Apple Silicon)
-- Reel Studio version
+- Rycap version
 
 **An anonymous id:** a random code created the first time the app runs
 and stored on your computer. It lets us tell "one person used it twice"
@@ -53,16 +53,16 @@ account or device serial number.
 ## Where it goes
 
 Data is sent to [PostHog](https://posthog.com), the product analytics
-service we also use for the Reel Studio phone app. It's sent in small
+service we also use for the phone app. It's sent in small
 batches every 30 seconds or so while the app is open. If you're offline,
 up to 200 events are held and sent later; nothing is kept beyond that.
 
-We use it only to understand how Reel Studio is used and to improve it. We
+We use it only to understand how Rycap is used and to improve it. We
 don't sell it and don't use it for advertising.
 
 ## Starting over
 
-To get a new anonymous id, quit Reel Studio and delete the file
+To get a new anonymous id, quit Rycap and delete the file
 `analytics-id` from the app's data folder:
 
 | System | Folder |
@@ -73,7 +73,7 @@ To get a new anonymous id, quit Reel Studio and delete the file
 
 ## Builds you make yourself
 
-If you build Reel Studio from this repository, it doesn't send anything.
+If you build Rycap from this repository, it doesn't send anything.
 Only the official releases on the
-[Releases page](https://github.com/rothxz/reel-studio-app/releases) send
+[Releases page](https://github.com/rothxz/rycap/releases) send
 usage data.

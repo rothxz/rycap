@@ -37,7 +37,7 @@ fn main() {
         .as_ref()
         .and_then(|d| std::fs::read_dir(d.join("src")).ok());
     let (Some(dir), Some(sources)) = (dir, sources) else {
-        let msg = "no C++ engine at REEL_ENGINE_DIR (<reel-studio>/modules/video-engine/cpp): \
+        let msg = "no C++ engine at REEL_ENGINE_DIR (<rycap-app>/modules/video-engine/cpp): \
                    building on the Rust stand-in engine";
         if std::env::var_os("REEL_REQUIRE_ENGINE").is_some_and(|v| !v.is_empty() && v != "0") {
             panic!("{msg} (REEL_REQUIRE_ENGINE is set)");
@@ -331,7 +331,7 @@ fn json_string(text: &str) -> String {
 fn release_inputs() {
     for (key, default) in [
         ("REEL_VERSION", std::env::var("CARGO_PKG_VERSION").unwrap()),
-        ("REEL_UPDATE_REPO", "rothxz/reel-studio-app".to_string()),
+        ("REEL_UPDATE_REPO", "rothxz/rycap".to_string()),
     ] {
         println!("cargo:rerun-if-env-changed={key}");
         let value = std::env::var(key)
@@ -499,12 +499,12 @@ BEGIN
   BEGIN
     BLOCK "040904b0"
     BEGIN
-      VALUE "CompanyName", "Reel Studio"
-      VALUE "FileDescription", "Reel Studio"
+      VALUE "CompanyName", "Rycap"
+      VALUE "FileDescription", "Rycap"
       VALUE "FileVersion", "{version}"
       VALUE "InternalName", "reel-studio"
       VALUE "OriginalFilename", "reel-studio.exe"
-      VALUE "ProductName", "Reel Studio"
+      VALUE "ProductName", "Rycap"
       VALUE "ProductVersion", "{version}"
     END
   END

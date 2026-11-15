@@ -17,6 +17,17 @@ use std::sync::{LazyLock, Mutex};
 
 use gpui::SharedString;
 
+/// The app's name, as people see it (window, menus, messages, packages).
+/// Folders, the keychain entry, ids and the program file keep the old
+/// name so existing installs carry on; see `prefs.rs`, `agent/keys.rs`.
+pub const APP_NAME: &str = "Rycap";
+
+/// The app's name as the shared dictionaries still write it. A UI string
+/// naming the app is looked up under this spelling too, and every
+/// translation shows `APP_NAME` in its place (the dictionaries keep the
+/// name in Latin letters in every language).
+const DICT_APP_NAME: &str = "Reel Studio";
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Locale {
     En,
@@ -191,6 +202,31 @@ fn translate(locale: Locale, english: &str) -> Option<&'static str> {
     if locale == Locale::En || english.is_empty() {
         return None;
     }
+    let found = lookup(locale, english).or_else(|| {
+        english
+            .contains(APP_NAME)
+            .then(|| lookup(locale, &english.replace(APP_NAME, DICT_APP_NAME)))
+            .flatten()
+    })?;
+    Some(renamed(found))
+}
+
+/// Translations with the dictionaries' app name swapped for `APP_NAME`,
+/// made once each.
+static RENAMED: LazyLock<Mutex<HashMap<&'static str, &'static str>>> =
+    LazyLock::new(Default::default);
+
+fn renamed(text: &'static str) -> &'static str {
+    if !text.contains(DICT_APP_NAME) {
+        return text;
+    }
+    let mut renamed = RENAMED.lock().unwrap();
+    renamed
+        .entry(text)
+        .or_insert_with(|| Box::leak(text.replace(DICT_APP_NAME, APP_NAME).into_boxed_str()))
+}
+
+fn lookup(locale: Locale, english: &str) -> Option<&'static str> {
     let dicts = &*DICTS;
     let text = dicts.text.get(&locale)?;
     if let Some(key) = dicts.by_english.get(english) {
@@ -229,6 +265,7 @@ pub fn tk(key: &str, fallback: &str, params: &[(&str, &dyn Display)]) -> String 
     let get = |l: Locale| dicts.text.get(&l).and_then(|t| t.get(key)).copied();
     let template = get(locale())
         .or_else(|| get(Locale::En))
+        .map(renamed)
         .unwrap_or(fallback);
     interpolate(template, params)
 }
@@ -291,6 +328,16 @@ mod tests {
         );
         assert_eq!(s, "Version 3 of x, {missing}");
         assert_eq!(interpolate("a { b", &[]), "a { b");
+    }
+
+    #[test]
+    fn strings_naming_the_app_keep_their_translation() {
+        assert_eq!(renamed("Reel Studio 问题反馈"), "Rycap 问题反馈");
+        assert_eq!(renamed("Settings"), "Settings");
+        if available().contains(&Locale::Zh) {
+            let zh = translate(Locale::Zh, "Rycap bug report").expect("translated");
+            assert!(zh.contains(APP_NAME) && !zh.contains(DICT_APP_NAME), "{zh}");
+        }
     }
 
     #[test]
