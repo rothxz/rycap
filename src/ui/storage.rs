@@ -306,7 +306,7 @@ impl Editor {
                         .text_size(px(theme::SM))
                         .text_color(theme::text_secondary())
                         .child(tf(
-                            "Reel Studio uses {percent} of your free space.",
+                            "Rycap uses {percent} of your free space.",
                             &[("percent", &format_share(total, all))],
                         )),
                 )
@@ -690,7 +690,7 @@ impl Editor {
                 None,
                 rows,
                 Some(
-                    "Counts what Reel Studio downloads for its features. Previews that stream while \
+                    "Counts what Rycap downloads for its features. Previews that stream while \
                      you browse aren't included.",
                 ),
             )

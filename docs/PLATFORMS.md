@@ -71,7 +71,8 @@ masks, blends, effects or filters, because all of that ran on Metal.
   - The ☰ app menu, built from the same menus as the macOS menu bar.
 - `src/main.rs`:
   - Closing the window quits (Linux, Windows).
-  - Linux app id `reel-studio` (matches the .desktop file).
+  - Linux app id `reel-studio` (matches the .desktop file; it keeps the
+    app's first name, like the package, program and data folder).
   - Windows release builds have no console window.
 - `src/agent/keys.rs`: keys in the system credential store (gpui's
   credentials API).
@@ -117,7 +118,8 @@ masks, blends, effects or filters, because all of that ran on Metal.
   type-checks the Intel build.
 - `packaging/windows/bundle.ps1` + `reel-studio.iss`:
   - A zip, and an Inno Setup installer that installs per user into
-    `%LOCALAPPDATA%\Programs\Reel Studio`: no admin rights, and a folder
+    `%LOCALAPPDATA%\Programs\Rycap` (an upgrade keeps the folder of an
+    earlier install, `…\Reel Studio`): no admin rights, and a folder
     the updater can write to.
   - Optional signing with `WIN_SIGN_PFX` / `WIN_SIGN_PASSWORD`.
 - `packaging/update-manifest.sh`: `linux-x86_64`, `linux-aarch64` and

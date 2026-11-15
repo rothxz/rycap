@@ -378,7 +378,7 @@ fn get_release_file(
     api_url: Option<&str>,
     direct_url: &str,
 ) -> Result<ureq::http::Response<ureq::Body>> {
-    let user_agent = format!("ReelStudio/{VERSION}");
+    let user_agent = format!("Rycap/{VERSION}");
     let api_err = match api_url {
         Some(api) => match agent
             .get(api)
@@ -450,7 +450,7 @@ fn find_update() -> Result<Option<Found>> {
         &agent
             .get(&feed_url())
             .header("Accept", "application/vnd.github+json")
-            .header("User-Agent", &format!("ReelStudio/{VERSION}"))
+            .header("User-Agent", &format!("Rycap/{VERSION}"))
             .call()?
             .body_mut()
             .read_to_string()?,
@@ -614,7 +614,7 @@ fn unpack(zip: &Path, dir: &Path, _version: &str) -> Result<PathBuf> {
         .arg("-C")
         .arg(&unpacked))?;
     let _ = std::fs::remove_file(zip);
-    // At the top or one folder down ("Reel Studio/reel-studio.exe").
+    // At the top or one folder down ("Rycap/reel-studio.exe").
     let mut found = None;
     for entry in std::fs::read_dir(&unpacked)?.flatten() {
         let path = entry.path();
@@ -635,7 +635,7 @@ fn unpack(_: &Path, _: &Path, _: &str) -> Result<PathBuf> {
     bail!("no updates on this system")
 }
 
-/// The released Windows program's name (cargo builds reel-studio-gpui.exe,
+/// The released Windows program's name (cargo builds rycap.exe,
 /// so a development build never updates itself).
 #[cfg(any(target_os = "windows", test))]
 const WINDOWS_EXE: &str = "reel-studio.exe";

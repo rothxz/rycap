@@ -4912,38 +4912,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "reel-studio-gpui"
-version = "0.2.0"
-dependencies = [
- "anyhow",
- "async-channel 2.5.0",
- "block",
- "cc",
- "chrono",
- "cosmic-text",
- "cpal",
- "embed-resource",
- "ffmpeg-next",
- "gpui",
- "half",
- "image",
- "libc",
- "metal 0.29.0",
- "objc",
- "ort",
- "pollster 0.4.0",
- "security-framework",
- "serde",
- "serde_json",
- "sha2 0.10.9",
- "sys-locale",
- "tiny-skia",
- "ttf-parser 0.25.1",
- "ureq",
- "wgpu",
-]
-
-[[package]]
 name = "ref-cast"
 version = "1.0.27"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5220,6 +5188,38 @@ dependencies = [
  "unicode-ccc 0.4.0",
  "unicode-properties",
  "unicode-script",
+]
+
+[[package]]
+name = "rycap"
+version = "0.2.0"
+dependencies = [
+ "anyhow",
+ "async-channel 2.5.0",
+ "block",
+ "cc",
+ "chrono",
+ "cosmic-text",
+ "cpal",
+ "embed-resource",
+ "ffmpeg-next",
+ "gpui",
+ "half",
+ "image",
+ "libc",
+ "metal 0.29.0",
+ "objc",
+ "ort",
+ "pollster 0.4.0",
+ "security-framework",
+ "serde",
+ "serde_json",
+ "sha2 0.10.9",
+ "sys-locale",
+ "tiny-skia",
+ "ttf-parser 0.25.1",
+ "ureq",
+ "wgpu",
 ]
 
 [[package]]

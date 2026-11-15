@@ -1,4 +1,4 @@
-# Reel Studio desktop: context
+# Rycap desktop: context
 
 This repo is the **desktop app**: a native Rust reimplementation of the
 Reel Studio desktop editor on GPUI (the UI framework behind the Zed
@@ -7,18 +7,29 @@ root next to the public `README.md` / `docs/images/` and the GitHub
 Releases (the Electron build publishes there until the Rust app ships).
 Its write-up is `docs/GPUI.md`.
 
+**The app is called Rycap** (it was Reel Studio). What people see says
+Rycap: `i18n::APP_NAME`, the window, menus, messages, packages and
+release files. Everything an existing install depends on keeps the first
+name: the bundle id `com.reelstudio.desktop`, the Windows AppId and
+`reel-studio.exe`, the Linux id / package `reel-studio`, the data folders
+(`prefs.rs`), the keychain entries (`agent/keys.rs`) and the GitHub repo
+`rothxz/reel-studio`. The shared dictionaries still write "Reel Studio":
+`i18n.rs` looks strings naming the app up under that spelling and shows
+Rycap in their place.
+
 **Goal:** match the current desktop editor's UI and behaviour (the web
 editor that Electron wraps) in native Rust, panel by panel. Track progress
 in `docs/PARITY.md`: tick items off there, and add any gaps you find.
 
-Workspace: open `~/Project/reel-studio-desktop.code-workspace`. It holds this
-repo and **`~/Project/reel-studio`**, the private app repo, which is the
+Workspace: open `~/Project/rycap-workspace/rycap.code-workspace`. It holds this
+repo and **`../rycap-app`** (the mobile app: the private app repo,
+GitHub `rothxz/reel-studio`), which is the
 reference for every screen and the home of the shared C++ engine. That repo's
 own `CLAUDE.md` is its codebase map.
 
 ## Rules
 
-- **This repo is PUBLIC.** Never copy source from `reel-studio` in here:
+- **This repo is PUBLIC.** Never copy source from `rycap-app` in here:
   no TypeScript, C++, shaders, catalogs or secrets. Read it, then write the
   Rust from scratch. The C++ engine is compiled *from the reference
   checkout* (`REEL_ENGINE_DIR`, see Build) and never vendored.
@@ -43,9 +54,9 @@ tools/shot.sh out.png  # screenshot the app window without focusing it
 ```
 
 - `.cargo/config.toml` points `REEL_ENGINE_DIR` at
-  `../reel-studio/modules/video-engine/cpp` (an exported variable wins).
+  `../rycap-app/modules/video-engine/cpp` (an exported variable wins).
   `build.rs` compiles every `cpp/src/*.cpp` + the shim with `cc`.
-- It also points `REEL_APP_DIR` at `../reel-studio`: `build.rs` reads the
+- It also points `REEL_APP_DIR` at `../rycap-app`: `build.rs` reads the
   app's public client config from its `.env` (asset host, catalog database
   URL + publishable key → `REEL_ASSETS_URL` / `REEL_CATALOG_URL` /
   `REEL_CATALOG_KEY`, also overridable at run time) and the filter catalog
@@ -189,7 +200,7 @@ when asked, marks the project dirty (autosave in 1.5 s) and commits. Next
 split as it grows: `src/model/` (document + edits), `src/media/` (decode,
 thumbnails, waveform, audio out), and the editor state out of `editor.rs`.
 
-## Porting map: old editor → source to read in `~/Project/reel-studio`
+## Porting map: old editor → source to read in `../rycap-app`
 
 | Part | Read first |
 | --- | --- |

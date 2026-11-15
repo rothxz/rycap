@@ -3,11 +3,15 @@
 ;        /DIcon=<app .ico> /DOutDir=<out> reel-studio.iss
 ;
 ; A per-user install (no administrator rights) in
-; %LOCALAPPDATA%\Programs\Reel Studio: a folder the user can write to, so
+; %LOCALAPPDATA%\Programs\Rycap: a folder the user can write to, so
 ; the in-app updater can replace reel-studio.exe there, like the zipped
 ; copy. Start menu entry, optional desktop shortcut, an uninstaller.
+;
+; The app was called Reel Studio. The AppId and the program's name are
+; unchanged, so an upgrade finds the installed copy and keeps its folder
+; (Inno Setup reuses the previous one); only the shortcuts are renamed.
 
-#define AppName "Reel Studio"
+#define AppName "Rycap"
 #define AppExe "reel-studio.exe"
 
 [Setup]
@@ -25,7 +29,7 @@ ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 MinVersion=10.0
 OutputDir={#OutDir}
-OutputBaseFilename=Reel-Studio-{#Version}-windows-{#Arch}-setup
+OutputBaseFilename=Rycap-{#Version}-windows-{#Arch}-setup
 SetupIconFile={#Icon}
 UninstallDisplayIcon={app}\{#AppExe}
 Compression=lzma2/max
@@ -46,6 +50,11 @@ Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppExe}"; Tasks: desktopico
 
 [Run]
 Filename: "{app}\{#AppExe}"; Description: "Open {#AppName}"; Flags: nowait postinstall skipifsilent
+
+[InstallDelete]
+; The shortcuts under the app's first name (replaced by the ones above).
+Type: files; Name: "{autoprograms}\Reel Studio.lnk"
+Type: files; Name: "{autodesktop}\Reel Studio.lnk"
 
 [UninstallDelete]
 ; What an update leaves beside the program until the next launch.

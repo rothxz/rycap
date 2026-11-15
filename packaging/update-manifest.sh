@@ -5,7 +5,7 @@
 #   packaging/update-manifest.sh <version> <download-base-url> <file>... > update.json
 #
 # The files are what each platform's updater installs (packaging/<os>/
-# bundle.*): Reel-Studio-<version>-mac-<arm64|x64>.zip,
+# bundle.*): Rycap-<version>-mac-<arm64|x64>.zip,
 # …-linux-<x64|arm64>.AppImage, …-windows-<x64|arm64>.zip. The keys are the
 # updater's platform_key(): darwin-aarch64, linux-x86_64, windows-x86_64…
 set -euo pipefail
@@ -28,7 +28,7 @@ for zip in "$@"; do
     *) echo "unknown platform: $name" >&2; exit 1 ;;
   esac
   case "$name" in
-    "Reel-Studio-$version-"*) ;;
+    "Rycap-$version-"*) ;;
     *) echo "$name is not version $version" >&2; exit 1 ;;
   esac
   sha=$(shasum -a 256 "$zip" | cut -d' ' -f1)

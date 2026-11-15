@@ -15,6 +15,8 @@
 use std::collections::HashMap;
 use std::sync::Mutex;
 
+/// Keeps the app's first name, like the other entries: the keys people
+/// saved are stored under it.
 #[cfg(target_os = "macos")]
 const SERVICE: &str = "Reel Studio AI agent";
 
