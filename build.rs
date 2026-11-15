@@ -29,7 +29,7 @@ fn main() {
     if std::env::var_os("CARGO_FEATURE_CPP_ENGINE").is_none() {
         return;
     }
-// The engine is optional: without a checkout the app builds on the Rust
+    // The engine is optional: without a checkout the app builds on the Rust
     // stand-in, with a warning. REEL_REQUIRE_ENGINE=1 (release builds) makes
     // a missing engine an error instead.
     let dir = std::env::var_os("REEL_ENGINE_DIR").map(PathBuf::from);
