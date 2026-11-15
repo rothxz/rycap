@@ -232,7 +232,7 @@ switch ($Command) {
             }
             $env:PATH = (Split-Path $userIscc) + ";" + $env:PATH
         }
-        & (Join-Path $root "packaging\windows\bundle.ps1") -Binary (Join-Path $root "target\release\reel-studio-gpui.exe") `
+        & (Join-Path $root "packaging\windows\bundle.ps1") -Binary (Join-Path $root "target\release\rycap.exe") `
             -Version $Version -Arch x64 -Out (Join-Path $root "dist")
     }
 }

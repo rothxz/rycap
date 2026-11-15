@@ -635,7 +635,7 @@ fn unpack(_: &Path, _: &Path, _: &str) -> Result<PathBuf> {
     bail!("no updates on this system")
 }
 
-/// The released Windows program's name (cargo builds reel-studio-gpui.exe,
+/// The released Windows program's name (cargo builds rycap.exe,
 /// so a development build never updates itself).
 #[cfg(any(target_os = "windows", test))]
 const WINDOWS_EXE: &str = "reel-studio.exe";
